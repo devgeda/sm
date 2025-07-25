@@ -1,0 +1,62 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+    <parent>
+    <groupId>com.devgeda</groupId>
+    <artifactId>Estoque</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>fx</artifactId>
+  <name>fx</name>
+  <packaging>jar</packaging>
+  
+  <dependencies>
+	<dependency>
+	    <groupId>net.rgielen</groupId>
+	    <artifactId>javafx-weaver-spring-boot-starter</artifactId>
+	    <version>1.3.0</version>
+	</dependency>
+
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-web</artifactId>
+	</dependency>
+    
+    <dependency>
+        <groupId>org.openjfx</groupId>
+        <artifactId>javafx-controls</artifactId>
+        <version>21</version>
+    </dependency>
+    
+    <dependency>
+        <groupId>org.openjfx</groupId>
+        <artifactId>javafx-fxml</artifactId>
+        <version>21</version>
+    </dependency>
+    
+    <dependency>	
+	    <groupId>org.openjfx</groupId>
+	    <artifactId>javafx-graphics</artifactId>
+   		<version>21</version>
+    </dependency>
+    
+	<dependency>
+	    <groupId>com.devgeda</groupId>
+	    <artifactId>api</artifactId>
+	    <version>0.0.1-SNAPSHOT</version>
+	</dependency>
+  
+  </dependencies>
+  
+  <build>
+    <plugins>
+        <plugin>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-maven-plugin</artifactId>
+            <version>0.0.8</version>
+            <configuration>
+		        <mainClass>com.devgeda.fx.EstoqueJavaFxApplicationLauncher</mainClass>
+		    </configuration>
+        </plugin>
+    </plugins>
+</build>
+</project>

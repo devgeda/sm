@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.devgeda.fx.controllers.ViewController">
+	<children>
+		<Label text="PESQUISAR PEÇA">
+			<font>
+				<Font name="System Bold" size="12.0" />
+			</font>
+		</Label>
+		<Label layoutY="28.0" text="Pesquisar peça no banco de dados:" />
+		<HBox alignment="CENTER" layoutX="24.0" layoutY="56.0" spacing="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="56.0">
+			<children>
+				<Label text="Pesquisar" HBox.hgrow="ALWAYS" />
+				<TextField fx:id="textfieldPesquisar" prefHeight="25.0" prefWidth="199.0" HBox.hgrow="ALWAYS" />
+				<Label text="Filtrar" HBox.hgrow="ALWAYS" />
+				<MenuButton fx:id="menuFiltros" mnemonicParsing="false" prefHeight="25.0" text="Filtros">
+				</MenuButton>
+				<Button fx:id="botaoPesquisar" mnemonicParsing="false" onAction="#pesquisarPeca_Action" text="Pesquisar" HBox.hgrow="ALWAYS" />
+            <Button fx:id="botaoRedefinir1" mnemonicParsing="false" onAction="#redefinir_Action" text="Redefinir" />
+			</children>
+		</HBox>
+		<TableView fx:id="tabelaPecas" layoutY="92.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="92.0">
+			<columns>
+				<TableColumn editable="false" text="Descrição">
+					<cellValueFactory>
+						<PropertyValueFactory property="descricao" />
+					</cellValueFactory>
+				</TableColumn>
+				<TableColumn editable="false" text="Código">
+					<cellValueFactory>
+						<PropertyValueFactory property="codigo" />
+					</cellValueFactory>
+				</TableColumn>
+				<TableColumn editable="false" text="Código Antigo">
+					<cellValueFactory>
+						<PropertyValueFactory property="codigoAntigo" />
+					</cellValueFactory>
+				</TableColumn>
+				<TableColumn editable="false" text="Quantidade">
+					<cellValueFactory>
+						<PropertyValueFactory property="quantidade" />
+					</cellValueFactory>
+				</TableColumn>
+				<TableColumn editable="false" text="Abertas">
+					<cellValueFactory>
+						<PropertyValueFactory property="aberto" />
+					</cellValueFactory>
+				</TableColumn>
+				<TableColumn editable="false" text="Fechadas">
+					<cellValueFactory>
+						<PropertyValueFactory property="fechado" />
+					</cellValueFactory>
+				</TableColumn>
+				<TableColumn editable="false" text="Coluna">
+					<cellValueFactory>
+						<PropertyValueFactory property="coluna" />
+					</cellValueFactory>
+				</TableColumn>
+				<TableColumn editable="false" text="Prateleira">
+					<cellValueFactory>
+						<PropertyValueFactory property="prateleira" />
+					</cellValueFactory>
+				</TableColumn>
+				<TableColumn editable="false" text="Linha">
+					<cellValueFactory>
+						<PropertyValueFactory property="linha" />
+					</cellValueFactory>
+				</TableColumn>
+			</columns>
+		</TableView>
+	</children>
+</AnchorPane>

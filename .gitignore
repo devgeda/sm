@@ -1,0 +1,43 @@
+HELP.md
+estoque-fx/
+
+# Maven
+/target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+# Eclipse
+.classpath
+.project
+.settings/
+.metadata/
+
+# IntelliJ
+*.iml
+.idea/
+*.iws
+*.ipr
+
+# VSCode
+.vscode/
+
+# Arquivos temporários
+*.log
+*.tmp
+*.bak
+*.swp
+
+# Sistema
+.DS_Store
+Thumbs.db
+desktop.ini

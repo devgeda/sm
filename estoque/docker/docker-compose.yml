@@ -1,0 +1,54 @@
+ services:
+  db_dev_local:
+    image: postgres:latest
+    container_name: db_dev_local
+    environment:
+      POSTGRES_DB: postgres_dev_local
+      POSTGRES_USER: postgres-dev-local
+      POSTGRES_PASSWORD: dev-Pg4370
+    ports:
+      - "5433:5432"
+    volumes:
+      - db_dev_local_data:/var/lib/postgresql/data
+
+  db_prod_local:
+    image: postgres:latest
+    container_name: db_prod_local
+    environment:
+      POSTGRES_DB: postgres_prod_local
+      POSTGRES_USER: postgres-prod-local
+      POSTGRES_PASSWORD: prod-Pg4370
+    ports:
+      - "5434:5432"
+    volumes:
+      - db_prod_local_data:/var/lib/postgresql/data
+
+  db_dev_remote:
+    image: postgres:latest
+    container_name: db_dev_remote
+    environment:
+      POSTGRES_DB: postgres_dev_remote
+      POSTGRES_USER: postgres-dev-remote
+      POSTGRES_PASSWORD: dev-Pg4370
+    ports:
+      - "5435:5432"
+    volumes:
+      - db_dev_remote_data:/var/lib/postgresql/data
+
+  db_prod_remote:
+    image: postgres:latest
+    container_name: db_prod_remote
+    environment:
+      POSTGRES_DB: postgres_prod_remote
+      POSTGRES_USER: postgres-prod-remote
+      POSTGRES_PASSWORD: prod-Pg4370
+    ports:
+      - "5436:5432"
+    volumes:
+      - db_prod_remote_data:/var/lib/postgresql/data
+
+volumes:
+  db_dev_local_data:
+  db_prod_local_data:
+  db_dev_remote_data:
+  db_prod_remote_data:

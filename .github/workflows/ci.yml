@@ -1,0 +1,21 @@
+name: Java/Maven CI
+
+on:
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+      - name: Build and test with Maven.
+        working-directory: ./estoque
+        run: mvn clean verify
