@@ -20,6 +20,8 @@ public class EstoqueJavaFxApplication extends Application {
 	@Override
 	public void init() throws Exception {
 		this.applicationContext = new SpringApplicationBuilder(EstoqueSpringbootApplication.class)
+				.sources(EstoqueSpringbootApplication.class)
+				.properties("spring.config.location=classpath:/config/")
 				.run(getParameters().getRaw().toArray(new String[0]));
 	}
 
