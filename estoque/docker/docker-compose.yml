@@ -1,4 +1,4 @@
- services:
+services:
   db_dev_local:
     image: postgres:latest
     container_name: db_dev_local
