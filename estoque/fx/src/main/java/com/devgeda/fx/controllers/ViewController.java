@@ -87,9 +87,7 @@ public class ViewController implements Initializable {
 	}
 
 	public void pesquisarPeca_Action() throws FileNotFoundException, IOException {
-		
-		
-		
+
 //		try {
 //			String pesquisa = textfieldPesquisar.getText().toUpperCase();
 //			RepositorioEstoque<Peca> repositoryPecas = new RepositorioPecasJpa();
@@ -133,7 +131,8 @@ public class ViewController implements Initializable {
 		carregarTabelaPecas();
 	}
 
-	private void carregarTabelaPecas() throws FileNotFoundException, IOException {
+	private void carregarTabelaPecas() {
+
 //		try {
 //			RepositorioEstoque<Peca> repositoryPecas = new RepositorioPecasJpa();
 //			List<Peca> pecas = repositoryPecas.selecionarEntidade();
