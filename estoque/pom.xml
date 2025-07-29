@@ -38,6 +38,7 @@
         <module>domain</module>
         <module>infrastructure</module>
         <module>fx</module>
+        <module>shared</module>
 	</modules>
 	<dependencies>
 			

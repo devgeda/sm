@@ -58,6 +58,12 @@
 	</dependency>
 	
 	<dependency>
+	    <groupId>com.devgeda</groupId>
+	    <artifactId>shared</artifactId>
+	    <version>0.0.1-SNAPSHOT</version>
+	</dependency>
+	
+	<dependency>
 	    <groupId>org.flywaydb</groupId>
 	    <artifactId>flyway-core</artifactId>
 	</dependency>
