@@ -6,10 +6,13 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Stream;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.devgeda.domain.models.Peca;
+import com.devgeda.fx.services.LocalPecaImplService;
+import com.devgeda.shared.dtos.PecaDTO;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -27,8 +30,10 @@ import net.rgielen.fxweaver.core.FxmlView;
 @Component
 @FxmlView("/views/VisualizarView.fxml")
 public class ViewController implements Initializable {
+	@Autowired
+	private LocalPecaImplService pecaService;
 	@FXML
-	private TableView<Peca> tabelaPecas;
+	private TableView<PecaDTO> tabelaPecas;
 	@FXML
 	private MenuButton menuFiltros;
 	@FXML
@@ -53,13 +58,7 @@ public class ViewController implements Initializable {
 
 		this.tabelaPecas.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
-		try {
-			carregarTabelaPecas();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		carregarTabelaPecas();
 		carregarMenuFiltros();
 	}
 
@@ -86,44 +85,37 @@ public class ViewController implements Initializable {
 		mItemLinha.setOnAction(event -> menuFiltros.setText("Filtro: Linha"));
 	}
 
-	public void pesquisarPeca_Action() throws FileNotFoundException, IOException {
+	public void pesquisarPeca_Action() {
 
-//		try {
-//			String pesquisa = textfieldPesquisar.getText().toUpperCase();
-//			RepositorioEstoque<Peca> repositoryPecas = new RepositorioPecasJpa();
-//			List<Peca> pecas = repositoryPecas.selecionarEntidade();
-//			List<Peca> pecasFiltradas = new ArrayList<Peca>();
-//			Stream<Peca> streamPecas = pecas.stream();
-//			Stream<Peca> streamPecasFiltradas = streamPecas.filter(pec -> {
-//				if (menuFiltros.getText().contains("Descrição")) {
-//					return pec.getDescricao().contains(pesquisa);
-//				}
-//				if (menuFiltros.getText().contains("Código")) {
-//					return pec.getCodigo().contains(pesquisa);
-//				}
-//				if (menuFiltros.getText().contains("Código Antigo")) {
-//					return pec.getCodigoAntigo().contains(pesquisa);
-//				}
-//				if (menuFiltros.getText().contains("Prateleira")) {
-//					return pec.getPrateleira().contains(pesquisa);
-//				}
-//				if (menuFiltros.getText().contains("Linha")) {
-//					return pec.getLinha().contains(pesquisa);
-//				}
-//				if (!menuFiltros.getText().contains("\\b(Descrição|Código(?: Antigo)?|Prateleira|Linha)\\b")) {
-//					return pec.getDescricao().contains(pesquisa);
-//				}
-//
-//				return false;
-//			});
-//			streamPecasFiltradas.forEach((pec) -> pecasFiltradas.add(pec));
-//			ObservableList<Peca> pecasObservableList = FXCollections.observableArrayList(pecasFiltradas);
-//			this.tabelaPecas.getItems().setAll(pecasObservableList);
-//		} catch (SQLException e) {
-//			Alert exceptionAlert = new Alert(AlertType.ERROR);
-//			exceptionAlert.setContentText(e.getMessage());
-//			exceptionAlert.showAndWait();
-//		}
+		String pesquisa = textfieldPesquisar.getText().toUpperCase();
+		List<PecaDTO> pecas = pecaService.selecionarEntidade();
+		List<PecaDTO> pecasFiltradas = new ArrayList<PecaDTO>();
+		Stream<PecaDTO> streamPecas = pecas.stream();
+		Stream<PecaDTO> streamPecasFiltradas = streamPecas.filter(pec -> {
+			if (menuFiltros.getText().contains("Descrição")) {
+				return pec.getDescricao().contains(pesquisa);
+			}
+			if (menuFiltros.getText().contains("Código")) {
+				return pec.getCodigo().contains(pesquisa);
+			}
+			if (menuFiltros.getText().contains("Código Antigo")) {
+				return pec.getCodigoAntigo().contains(pesquisa);
+			}
+			if (menuFiltros.getText().contains("Prateleira")) {
+				return pec.getPrateleira().contains(pesquisa);
+			}
+			if (menuFiltros.getText().contains("Linha")) {
+				return pec.getLinha().contains(pesquisa);
+			}
+			if (!menuFiltros.getText().contains("\\b(Descrição|Código(?: Antigo)?|Prateleira|Linha)\\b")) {
+				return pec.getDescricao().contains(pesquisa);
+			}
+
+			return false;
+		});
+		streamPecasFiltradas.forEach((pec) -> pecasFiltradas.add(pec));
+		ObservableList<PecaDTO> pecasObservableList = FXCollections.observableArrayList(pecasFiltradas);
+		this.tabelaPecas.getItems().setAll(pecasObservableList);
 
 	}
 
@@ -133,18 +125,10 @@ public class ViewController implements Initializable {
 
 	private void carregarTabelaPecas() {
 
-//		try {
-//			RepositorioEstoque<Peca> repositoryPecas = new RepositorioPecasJpa();
-//			List<Peca> pecas = repositoryPecas.selecionarEntidade();
-//			ObservableList<Peca> pecasObservableList = FXCollections.observableArrayList(pecas);
-//			this.tabelaPecas.getItems().setAll(pecasObservableList);
-//
-//		} catch (SQLException e) {
-//			Alert exceptionAlert = new Alert(AlertType.ERROR);
-//			exceptionAlert.setContentText(e.getMessage());
-//			exceptionAlert.showAndWait();
-//
-//		}
+		List<PecaDTO> pecas = pecaService.selecionarEntidade();
+		ObservableList<PecaDTO> pecasObservableList = FXCollections.observableArrayList(pecas);
+		this.tabelaPecas.getItems().setAll(pecasObservableList);
+
 	}
 
 }
